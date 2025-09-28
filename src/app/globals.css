@@ -2,24 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: light;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-gray-50 text-gray-900 antialiased;
+  @apply min-h-screen bg-[radial-gradient(circle_at_top,_rgba(0,187,249,0.08),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(247,37,133,0.08),_transparent_60%)] bg-brand-dark text-slate-100 antialiased;
 }
 
 a {
-  @apply text-brand;
+  @apply text-brand-light transition hover:text-brand;
 }
 
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  @apply outline-none ring-2 ring-brand/60 ring-offset-2;
+  @apply outline-none ring-2 ring-brand-light/70 ring-offset-2 ring-offset-surface-elevated;
 }

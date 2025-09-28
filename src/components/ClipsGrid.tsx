@@ -9,9 +9,9 @@ type ClipsGridProps = {
 export default function ClipsGrid({ clips, masterSrc }: ClipsGridProps) {
   if (clips.length === 0) {
     return (
-      <div className="rounded-3xl border border-dashed border-gray-200 bg-white p-12 text-center text-gray-600">
-        <p className="text-lg font-semibold text-gray-800">No highlights detected.</p>
-        <p className="mt-2 text-sm">Try another video or tweak your source.</p>
+      <div className="rounded-3xl border border-dashed border-surface-border/80 bg-surface-highlight/70 p-12 text-center text-slate-300">
+        <p className="text-lg font-semibold text-white">No highlights detected.</p>
+        <p className="mt-2 text-sm text-slate-400">Try another video or tweak your source.</p>
       </div>
     );
   }

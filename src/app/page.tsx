@@ -105,14 +105,14 @@ export default function HomePage() {
             <div className="space-y-4">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
                 <div>
-                  <h2 className="text-2xl font-semibold text-gray-900">Highlights</h2>
+                  <h2 className="text-2xl font-semibold text-white">Highlights</h2>
                   {source ? (
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-slate-400">
                       Source: {source.type === "file" ? source.name ?? "Uploaded file" : source.url}
                     </p>
                   ) : null}
                 </div>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-slate-400">
                   {source?.type === "file"
                     ? "Playback buttons use your uploaded file."
                     : "Playback buttons use the original URL."}
@@ -121,9 +121,9 @@ export default function HomePage() {
               <ClipsGrid clips={clips} masterSrc={masterSrc} />
             </div>
           ) : (
-            <div className="rounded-3xl border border-dashed border-gray-200 bg-white p-12 text-center text-gray-600">
-              <p className="text-lg font-semibold text-gray-800">No highlights detected.</p>
-              <p className="mt-2 text-sm">Try another video or adjust your source.</p>
+            <div className="rounded-3xl border border-dashed border-surface-border/80 bg-surface-highlight/70 p-12 text-center text-slate-300">
+              <p className="text-lg font-semibold text-white">No highlights detected.</p>
+              <p className="mt-2 text-sm text-slate-400">Try another video or adjust your source.</p>
             </div>
           )
         ) : null}

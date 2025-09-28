@@ -78,8 +78,8 @@ export default function ClipCard({ clip, masterSrc }: ClipCardProps) {
   };
 
   return (
-    <article className="flex h-full flex-col rounded-3xl bg-white p-5 shadow-sm ring-1 ring-gray-100 transition hover:-translate-y-1 hover:shadow-md">
-      <div className="relative overflow-hidden rounded-2xl bg-gray-100">
+    <article className="flex h-full flex-col rounded-3xl border border-surface-border/70 bg-surface-elevated/95 p-5 shadow-card transition hover:-translate-y-1 hover:border-brand-light/50 hover:shadow-[0_30px_65px_-35px_rgba(0,245,212,0.5)]">
+      <div className="relative overflow-hidden rounded-2xl bg-surface-highlight/60">
         {clip.thumbnailUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={clip.thumbnailUrl} alt={clip.title} className="h-48 w-full object-cover" />
@@ -91,20 +91,20 @@ export default function ClipCard({ clip, masterSrc }: ClipCardProps) {
             className="h-48 w-full rounded-2xl object-cover"
           />
         ) : (
-          <div className="flex h-48 w-full items-center justify-center bg-gradient-to-br from-brand/10 via-white to-brand/10 text-sm font-medium text-brand">
+          <div className="flex h-48 w-full items-center justify-center bg-gradient-to-br from-brand/20 via-transparent to-brand-light/20 text-sm font-medium text-brand-light">
             Clip preview
           </div>
         )}
-        <span className="absolute left-3 top-3 inline-flex items-center rounded-full bg-black/65 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+        <span className="absolute left-3 top-3 inline-flex items-center rounded-full bg-black/70 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
           {formatTimestamp(clip.startSec)} – {formatTimestamp(clip.endSec)}
         </span>
       </div>
       <div className="mt-4 flex flex-1 flex-col gap-4">
         <div className="space-y-2">
-          <h3 className="line-clamp-2 text-lg font-semibold text-gray-900">{clip.title}</h3>
-          <ul className="flex flex-wrap gap-2 text-sm text-brand">
+          <h3 className="line-clamp-2 text-lg font-semibold text-white">{clip.title}</h3>
+          <ul className="flex flex-wrap gap-2 text-sm text-brand-light">
             {clip.hashtags.map((tag) => (
-              <li key={tag} className="rounded-full bg-brand/10 px-2.5 py-1 font-medium">
+              <li key={tag} className="rounded-full bg-brand-light/15 px-2.5 py-1 font-medium">
                 {tag.startsWith("#") ? tag : `#${tag}`}
               </li>
             ))}
@@ -115,7 +115,7 @@ export default function ClipCard({ clip, masterSrc }: ClipCardProps) {
             <button
               type="button"
               onClick={handlePlay}
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand/90"
+              className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-brand-dark shadow-sm transition hover:bg-brand-light focus-visible:ring-2 focus-visible:ring-brand-light/80 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-elevated"
             >
               <PlayIcon className="h-4 w-4" aria-hidden="true" />
               {isPlaying ? "Playing" : "Play clip"}
@@ -123,7 +123,7 @@ export default function ClipCard({ clip, masterSrc }: ClipCardProps) {
             <button
               type="button"
               onClick={handleReplay}
-              className="inline-flex items-center gap-2 rounded-full border border-brand/40 px-4 py-2 text-sm font-semibold text-brand transition hover:border-brand hover:text-brand"
+              className="inline-flex items-center gap-2 rounded-full border border-brand-light/60 px-4 py-2 text-sm font-semibold text-brand-light transition hover:border-brand-light hover:text-white"
             >
               <ArrowPathIcon className="h-4 w-4" aria-hidden="true" />
               Replay

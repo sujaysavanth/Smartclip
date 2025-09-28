@@ -105,10 +105,13 @@ export default function Uploader({ onAnalyze, analyzing, error }: UploaderProps)
   const hasSelection = !!file || !!url;
 
   return (
-    <section id="upload" className="mx-auto max-w-4xl space-y-8 rounded-3xl bg-white p-8 shadow-sm">
+    <section
+      id="upload"
+      className="mx-auto max-w-4xl space-y-8 rounded-3xl border border-surface-border/70 bg-surface-elevated/90 p-8 shadow-card backdrop-blur"
+    >
       <header className="space-y-3 text-center">
-        <h2 className="text-3xl font-semibold text-gray-900">Upload or paste a link</h2>
-        <p className="text-base text-gray-600">AI highlights in seconds. Analysis may take longer for long videos.</p>
+        <h2 className="text-3xl font-semibold text-white">Upload or paste a link</h2>
+        <p className="text-base text-slate-300">AI highlights in seconds. Analysis may take longer for long videos.</p>
       </header>
       <form className="space-y-6" onSubmit={handleSubmit} noValidate>
         <label
@@ -117,7 +120,9 @@ export default function Uploader({ onAnalyze, analyzing, error }: UploaderProps)
           onDrop={handleDrop}
           className={clsx(
             "flex cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed px-6 py-10 text-center transition",
-            file ? "border-brand bg-brand/5" : "border-gray-300 hover:border-brand/70 hover:bg-brand/5"
+            file
+              ? "border-brand-light/70 bg-brand-light/10"
+              : "border-surface-border hover:border-brand-light/70 hover:bg-surface-highlight/60"
           )}
         >
           <input
@@ -129,14 +134,14 @@ export default function Uploader({ onAnalyze, analyzing, error }: UploaderProps)
             className="sr-only"
             onChange={handleFileChange}
           />
-          <span className="rounded-full bg-brand/10 px-3 py-1 text-sm font-medium text-brand">Drag & drop</span>
-          <p className="text-base font-semibold text-gray-900">Drop your video here, or click to browse</p>
-          <p className="text-sm text-gray-500">Supported formats: MP4, WebM, OGG, MOV, MKV</p>
-          {file ? <p className="text-sm text-brand">Selected: {file.name}</p> : null}
+          <span className="rounded-full bg-brand-light/15 px-3 py-1 text-sm font-medium text-brand-light">Drag & drop</span>
+          <p className="text-base font-semibold text-white">Drop your video here, or click to browse</p>
+          <p className="text-sm text-slate-400">Supported formats: MP4, WebM, OGG, MOV, MKV</p>
+          {file ? <p className="text-sm text-brand-light">Selected: {file.name}</p> : null}
         </label>
 
         <div className="space-y-2">
-          <label htmlFor="videoUrl" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="videoUrl" className="block text-sm font-medium text-slate-200">
             Or paste a video URL
           </label>
           <input
@@ -146,13 +151,13 @@ export default function Uploader({ onAnalyze, analyzing, error }: UploaderProps)
             placeholder="https://example.com/video.mp4"
             value={url}
             onChange={handleUrlChange}
-            className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 shadow-sm transition focus:border-brand"
+            className="w-full rounded-xl border border-surface-border/80 bg-surface-highlight/70 px-4 py-3 text-base text-slate-100 shadow-sm transition focus:border-brand-light focus:outline-none"
           />
-          {urlError ? <p className="text-sm text-rose-600" role="alert">{urlError}</p> : null}
+          {urlError ? <p className="text-sm text-rose-400" role="alert">{urlError}</p> : null}
         </div>
 
         {error ? (
-          <div className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700" role="alert">
+          <div className="rounded-xl border border-rose-500/40 bg-rose-500/10 px-4 py-3 text-sm text-rose-200" role="alert">
             {error}
           </div>
         ) : null}
@@ -161,11 +166,11 @@ export default function Uploader({ onAnalyze, analyzing, error }: UploaderProps)
           <button
             type="submit"
             disabled={!hasSelection || analyzing}
-            className="inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-base font-semibold text-white shadow-sm transition disabled:cursor-not-allowed disabled:bg-brand/50"
+            className="inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-base font-semibold text-brand-dark shadow-sm transition hover:bg-brand-light focus-visible:ring-2 focus-visible:ring-brand-light focus-visible:ring-offset-2 focus-visible:ring-offset-surface-elevated disabled:cursor-not-allowed disabled:bg-brand/40 disabled:text-brand-dark/60"
           >
             {analyzing ? "Analyzing…" : "Analyze"}
           </button>
-          <p className="text-sm text-gray-500">Your media stays on this device in mock mode.</p>
+          <p className="text-sm text-slate-400">Your media stays on this device in mock mode.</p>
         </div>
       </form>
     </section>

@@ -10,12 +10,24 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          DEFAULT: "#6366f1",
-          light: "#a855f7"
+          DEFAULT: "#00f5d4",
+          light: "#00bbf9",
+          accent: "#f72585",
+          dark: "#080b1b"
+        },
+        surface: {
+          DEFAULT: "#0d1226",
+          elevated: "#161b3a",
+          highlight: "#1f2651",
+          border: "#2c356a"
         }
       },
       boxShadow: {
-        card: "0 20px 45px -15px rgba(99, 102, 241, 0.35)"
+        card: "0 30px 60px -25px rgba(0, 187, 249, 0.45)"
+      },
+      backgroundImage: {
+        "hero-radial":
+          "radial-gradient(circle at 15% 20%, rgba(0, 245, 212, 0.25), transparent 55%), radial-gradient(circle at 85% 0%, rgba(247, 37, 133, 0.25), transparent 45%)"
       }
     }
   },
